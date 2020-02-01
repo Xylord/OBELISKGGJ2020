@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Boat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://script/WinArea.cs" type="Script" id=2]
 [ext_resource path="res://OceanShader.tres" type="Material" id=3]
 [ext_resource path="res://Projected-grid.gd" type="Script" id=4]
+[ext_resource path="res://CubeCamera.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -45,5 +46,8 @@ material/0 = null
 [node name="Ocean" type="ImmediateGeometry" parent="."]
 material_override = ExtResource( 3 )
 script = ExtResource( 4 )
+
+[node name="CubeCamera" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.92302, 3.30114, 7.50822 )
 [connection signal="body_entered" from="WinArea" to="WinArea" method="_on_WinArea_body_entered"]
 [connection signal="body_entered" from="WinArea" to="WinArea" method="OnEnter"]

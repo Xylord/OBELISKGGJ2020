@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://asset/UI/HealthBar/HealthBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://script/Boat.gd" type="Script" id=2]
@@ -14,6 +14,22 @@ emission_on_uv2 = false
 
 [sub_resource type="CapsuleMesh" id=3]
 material = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+flag_align_y = true
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.0
+initial_velocity_random = 1.0
+
+[sub_resource type="SpatialMaterial" id=5]
+emission_enabled = true
+emission = Color( 0, 1, 0.0156863, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="QuadMesh" id=6]
+material = SubResource( 5 )
 
 [node name="Boat" type="RigidBody"]
 script = ExtResource( 2 )
@@ -40,4 +56,10 @@ one_shot = true
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -1.42826e-07, 0.481111, -0.87666, 7.8383e-08, 0.87666, 0.481111, 1, 0, -1.62921e-07, -5.5494, 2.90816, 0 )
+
+[node name="Particles" type="Particles" parent="."]
+transform = Transform( -0.999565, 0, -0.0294916, 0, 1, 0, 0.0294916, 0, -0.999565, -3.02954, 0.547526, 0 )
+local_coords = false
+process_material = SubResource( 4 )
+draw_pass_1 = SubResource( 6 )
 [connection signal="health_updated" from="." to="HealthBar" method="_on_Boat_health_updated"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://asset/Player/Boat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://script/WinArea.gd" type="Script" id=2]
 [ext_resource path="res://OceanShader.tres" type="Material" id=3]
 [ext_resource path="res://Projected-grid.gd" type="Script" id=4]
+[ext_resource path="res://asset/lightning.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -11,13 +12,15 @@
 
 [sub_resource type="CubeMesh" id=3]
 
+[sub_resource type="ProceduralSky" id=5]
+
 [sub_resource type="Environment" id=4]
 background_mode = 2
+background_sky = SubResource( 5 )
 fog_enabled = true
 glow_enabled = true
-glow_strength = 0.85
-glow_hdr_threshold = 1.31
-glow_hdr_luminance_cap = 20.44
+glow_intensity = 0.01
+glow_blend_mode = 1
 
 [node name="Spatial" type="Spatial"]
 
@@ -56,4 +59,7 @@ angular_damp = 0.7
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 4 )
+
+[node name="lightning" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.6764, 2, -2.49102 )
 [connection signal="body_entered" from="Boat" to="WinArea" method="_on_Boat_body_entered"]

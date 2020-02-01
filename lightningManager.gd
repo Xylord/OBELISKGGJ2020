@@ -4,7 +4,7 @@ extends Timer
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var scene = preload("res://asset/lightningCollision.tscn") # Will load when parsing the script.
+var scene = preload("res://asset/WarningMesh.tscn") # Will load when parsing the script.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

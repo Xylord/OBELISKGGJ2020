@@ -3,5 +3,6 @@
 [ext_resource path="res://lightningManager.gd" type="Script" id=1]
 
 [node name="lightningSpawner" type="Timer"]
+wait_time = 0.25
 autostart = true
 script = ExtResource( 1 )

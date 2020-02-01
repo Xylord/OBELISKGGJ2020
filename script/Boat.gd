@@ -6,9 +6,9 @@ extends RigidBody
 # var b = "text"
 var thrust;
 var torque;
-var forwardThrust = 5.0;
+var forwardThrust = 1.0;
 var rotationThrust = .5;
-var max_velocity = 10.0;
+var max_velocity = 20.0;
 var  max_rotation = 1.25;
 
 var ocean;

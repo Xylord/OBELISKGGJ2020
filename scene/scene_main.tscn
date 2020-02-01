@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://asset/Player/Boat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://script/WinArea.gd" type="Script" id=2]
 [ext_resource path="res://OceanShader.tres" type="Material" id=3]
 [ext_resource path="res://Projected-grid.gd" type="Script" id=4]
 [ext_resource path="res://asset/lightningCollision.tscn" type="PackedScene" id=5]
+[ext_resource path="res://asset/lightningManager.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -62,4 +63,6 @@ environment = SubResource( 4 )
 
 [node name="Area" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.4772, 1.53878, -9.49705 )
+
+[node name="lightningSpawner" parent="." instance=ExtResource( 6 )]
 [connection signal="body_entered" from="Boat" to="WinArea" method="_on_Boat_body_entered"]

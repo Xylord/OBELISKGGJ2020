@@ -1,6 +1,6 @@
 extends Area
 
-var counter = 10
+var counter = 0.5
 
 func _ready():
 	connect("body_entered", self, "_on_Boat_body_entered")
@@ -12,7 +12,7 @@ func _process(delta):
 		queue_free()
 
 func _on_Boat_body_entered(body):
-	owner.get_node("Boat").damage(10)
+	get_parent().get_node("Boat").damage(10)
 	print("Area Entered")
 	
 

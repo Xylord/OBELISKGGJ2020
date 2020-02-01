@@ -9,7 +9,7 @@ var torque;
 var forwardThrust = 5.0;
 var rotationThrust = .5;
 var max_velocity = 10.0;
-var  max_rotation = 2;
+var  max_rotation = 1.25;
 
 var ocean;
 

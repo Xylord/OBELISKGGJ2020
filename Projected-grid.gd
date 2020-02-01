@@ -182,3 +182,7 @@ func update_waves():
 	waves_in_tex.create_from_image(img, 0)
 	
 	material_override.set_shader_param('waves', waves_in_tex)
+
+
+func _on_Boat_body_entered(body):
+	pass # Replace with function body.

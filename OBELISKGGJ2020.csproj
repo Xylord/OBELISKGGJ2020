@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Boat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="script\WinArea.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

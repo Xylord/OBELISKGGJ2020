@@ -28,9 +28,9 @@ public class Boat : RigidBody
     }
     public override void _PhysicsProcess(float delta)
     {
-        GD.Print("Current Velocity" + LinearVelocity.Length());
+      // GD.Print("Current Velocity " + LinearVelocity.Length());
         
-        GD.Print("Current rotation" + AngularVelocity.Length());
+      //  GD.Print("Current rotation " + AngularVelocity.Length());
         _GetMouvement();
         
 
@@ -39,7 +39,7 @@ public class Boat : RigidBody
     public void _GetMouvement(){
         if(Input.IsActionPressed("ui_up")){
             //move up
-            GD.Print("Moving up");
+           // GD.Print("Moving up");
             if(LinearVelocity.Length()<max_velocity)
             {    
                 thrust = forwardThrust * GlobalTransform.basis.x;
@@ -48,7 +48,7 @@ public class Boat : RigidBody
         }
         if(Input.IsActionPressed("ui_down")){
             //move down
-            GD.Print("Moving down");
+           // GD.Print("Moving down");
 
             if(LinearVelocity.Length()<max_velocity){
                 thrust = forwardThrust *GlobalTransform.basis.x;
@@ -59,7 +59,7 @@ public class Boat : RigidBody
         if(Input.IsActionPressed("ui_right")){
             //move right
             
-            GD.Print("Moving right");
+            //GD.Print("Moving right");
             if(AngularVelocity.Length()<max_rotation){
                 thrust = rotationThrust *GlobalTransform.basis.y;
                 ApplyTorqueImpulse(-thrust);       
@@ -67,7 +67,7 @@ public class Boat : RigidBody
         }               
         if(Input.IsActionPressed("ui_left")){
             //move left
-            GD.Print("Moving left");
+           // GD.Print("Moving left");
             if(AngularVelocity.Length()<max_rotation){
                 thrust = rotationThrust * GlobalTransform.basis.y;
                 ApplyTorqueImpulse(thrust);

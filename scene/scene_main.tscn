@@ -4,7 +4,7 @@
 [ext_resource path="res://script/WinArea.gd" type="Script" id=2]
 [ext_resource path="res://OceanShader.tres" type="Material" id=3]
 [ext_resource path="res://Projected-grid.gd" type="Script" id=4]
-[ext_resource path="res://asset/lightning.tscn" type="PackedScene" id=5]
+[ext_resource path="res://asset/lightningCollision.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -15,9 +15,9 @@
 [sub_resource type="ProceduralSky" id=5]
 
 [sub_resource type="Environment" id=4]
-background_mode = 2
+background_mode = 1
 background_sky = SubResource( 5 )
-fog_enabled = true
+ambient_light_color = Color( 0.85098, 0.823529, 0.388235, 1 )
 glow_enabled = true
 glow_intensity = 0.01
 glow_blend_mode = 1
@@ -30,7 +30,7 @@ mesh = SubResource( 1 )
 material/0 = null
 
 [node name="WinArea" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.4962 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0458794, 0, 8.4661 )
 collision_layer = 16
 collision_mask = 16
 script = ExtResource( 2 )
@@ -60,6 +60,6 @@ angular_damp = 0.7
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 4 )
 
-[node name="lightning" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.6764, 2, -2.49102 )
+[node name="Area" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.4772, 1.53878, -9.49705 )
 [connection signal="body_entered" from="Boat" to="WinArea" method="_on_Boat_body_entered"]

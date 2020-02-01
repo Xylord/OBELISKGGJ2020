@@ -29,6 +29,15 @@ func _physics_process(delta):
 		print("Ouch")
 		damage(10)
 	_get_movement()
+	var ocean = get_parent().get_node('Ocean')
+	
+	var translation = ocean.get_displace(Vector2(global_transform.origin.x, global_transform.origin.z))
+	var buoyancyForce = translation.y - global_transform.origin.y
+	buoyancyForce = clamp(buoyancyForce, 0, INF)
+	
+	apply_central_impulse(Vector3(0, buoyancyForce, 0))
+	
+	print(buoyancyForce)
 
 
 					
@@ -46,12 +55,12 @@ func _get_movement():
 	if Input.is_action_pressed("ui_left"):
 
 		if (angular_velocity.length() <max_rotation):		
-			thrust = rotationThrust * global_transform.basis.y
+			thrust = rotationThrust * global_transform.basis.y * linear_velocity.length() / max_velocity
 			apply_torque_impulse(thrust)
 			
 	if Input.is_action_pressed("ui_right"):
 		if (angular_velocity.length() <max_rotation):
-			thrust = rotationThrust * global_transform.basis.y
+			thrust = rotationThrust * global_transform.basis.y * linear_velocity.length() / max_velocity
 			apply_torque_impulse(-thrust)	
 
 

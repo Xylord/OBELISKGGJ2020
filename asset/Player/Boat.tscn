@@ -75,10 +75,6 @@ visible = false
 
 [node name="ship0" parent="." instance=ExtResource( 6 )]
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( -1.42826e-07, 0.481111, -0.87666, 7.8383e-08, 0.87666, 0.481111, 1, -8.52651e-14, -1.62921e-07, -17.4683, 8.06691, 0 )
-far = 1000.0
-
 [node name="Particles" type="Particles" parent="."]
 transform = Transform( -0.999565, 0, -0.0294916, 0, 1, 0, 0.0294916, 0, -0.999565, -3.02954, 0.547526, 0 )
 local_coords = false

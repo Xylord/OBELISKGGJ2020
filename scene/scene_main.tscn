@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://asset/Player/Boat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://script/WinArea.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://asset/crystal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://asset/Pickable/Plank.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scene/level_scene_main_script.gd" type="Script" id=10]
+[ext_resource path="res://asset/InterpolatedCamera.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -87,5 +88,9 @@ transform = Transform( 1.06158, 0, 0, 0, 9.92381, 0, 0, 0, 2.83078, 16.6182, -1.
 
 [node name="sun" parent="." instance=ExtResource( 7 )]
 transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 178.845, 0, 0 )
+
+[node name="InterpolatedCamera" parent="." instance=ExtResource( 11 )]
+far = 500.0
+speed = 3.0
 [connection signal="body_entered" from="Boat" to="WinArea" method="_on_Boat_body_entered"]
 [connection signal="body_entered" from="Boat" to="Plank" method="_on_Boat_body_entered"]

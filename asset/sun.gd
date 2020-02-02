@@ -13,7 +13,6 @@ func _ready():
 	env = get_parent().get_node("WorldEnvironment")
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	currentCharge = lerp(currentCharge, charge, 0.5)

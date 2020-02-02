@@ -16,7 +16,7 @@ func _ready():
 func _process(delta):
 	#print(self.stream)
 	#print(get_playback_position())
-	#print(get_stream_playback())
+	#print(get_stream_playback()) # gets the time of the audio
 	#print(AudioEffectSpectrumAnalyzer.new().get_buffer_length())
 	#print(AudioEffectSpectrumAnalyzer.new().get_tap_back_pos())
 	pass

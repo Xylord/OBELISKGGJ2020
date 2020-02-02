@@ -1,0 +1,15 @@
+Greetings and welcome to cyber sea. 
+
+Here are a few controls :
+
+w,a,s,d to go forward,left,backward and right
+
+You can use your mouse pitch to control the pitch of your ship
+
+Use shift to toggle acceleration
+
+Be careful as it depletes your charge meter
+
+Reach the sun. Reconstruct the sky. Repair the world.
+
+Escape the Storm. Avoid the sea pillars. Ride the waves

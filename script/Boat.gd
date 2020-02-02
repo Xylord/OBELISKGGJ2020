@@ -148,7 +148,7 @@ func _dash():
 
 func _input(event):
 	if event is InputEventMouseMotion and is_gliding:
-		apply_torque_impulse(global_transform.basis.z *event.relative.y *0.01)
+		apply_torque_impulse(global_transform.basis.z *event.relative.y *0.02)
 	
 func _glide():
 	if !is_gliding:

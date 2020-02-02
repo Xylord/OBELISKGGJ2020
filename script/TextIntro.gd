@@ -25,7 +25,7 @@ func _process(delta):
 func _on_Timer_timeout():
 	textCount+=1
 	set_text(textArray[textCount])
-	timer.start()
+	queue_free()
 	
 		
 

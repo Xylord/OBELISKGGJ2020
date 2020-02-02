@@ -19,6 +19,7 @@ var scene = preload("res://asset/CannonBall.tscn") # Will load when parsing the 
 export(float) var max_health = 100
 onready var health = max_health setget _set_health
 onready var invulnerability_timer = $InvulnerabilityTimer
+onready var cannon_timer = $CannonTimer
 signal health_updated(health)
 signal killed()
 
@@ -34,7 +35,7 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("press_k"):
 		print("Ouch")
 		damage(10)
-	_get_movement()
+	_get_movement(_delta)
 	var ocean = get_parent().get_node('Ocean')
 	
 	var translation = ocean.get_displace(Vector2(global_transform.origin.x, global_transform.origin.z))
@@ -63,15 +64,15 @@ func _physics_process(_delta):
 	apply_torque_impulse(correctingMoment)
 
 					
-func _get_movement():
-	if Input.is_action_pressed("ui_accept"):
+func _get_movement(_delta: float):
+	if Input.is_action_pressed("ui_accept") and cannon_timer.is_stopped():
+		cannon_timer.start()
 		var node: Spatial = scene.instance()
 		get_parent().add_child(node)
 		var pos: Vector3 = global_transform.origin
 		node.translation = pos
 		var rig: RigidBody = node
-		if rig:
-			rig.set_axis_velocity(global_transform.basis.x * 10.0)
+		rig.add_central_force(global_transform.basis.x * 100.0 * _delta)
 	
 	if Input.is_action_pressed("ui_up"):
 		if (linear_velocity.length() <max_velocity):
@@ -110,7 +111,7 @@ func _set_health(value):
 	health = clamp(value, 0 , max_health)
 	if health != prev_health:
 		emit_signal("health_updated",health)
-		if health == 0:
+		if health <= 0:
 			kill()
 			emit_signal("killed")
 

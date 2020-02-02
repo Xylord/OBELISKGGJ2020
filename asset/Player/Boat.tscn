@@ -67,4 +67,7 @@ transform = Transform( -0.999565, 0, -0.0294916, 0, 1, 0, 0.0294916, 0, -0.99956
 local_coords = false
 process_material = SubResource( 4 )
 draw_pass_1 = SubResource( 6 )
+
+[node name="CannonTimer" type="Timer" parent="."]
+one_shot = true
 [connection signal="health_updated" from="." to="HealthBar" method="_on_Boat_health_updated"]

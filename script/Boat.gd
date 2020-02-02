@@ -6,10 +6,16 @@ extends RigidBody
 # var b = "text"
 var thrust;
 var torque;
+
 var forwardThrust = 1.0;
 var rotationThrust = .5;
 var max_velocity = 20.0;
-var  max_rotation = 1.25;
+var max_rotation = 1.25;
+
+
+var dash_multiplier = 2;
+var dash_max_speed = 30;
+var is_dashing=false;
 
 var ocean;
 
@@ -32,9 +38,12 @@ func _ready():
 
 		
 func _physics_process(_delta):
+
 	if Input.is_action_just_pressed("press_k"):
 		print("Ouch")
 		damage(10)
+		
+	dash()	
 	_get_movement(_delta)
 	var ocean = get_parent().get_node('Ocean')
 	
@@ -114,6 +123,19 @@ func _set_health(value):
 		if health <= 0:
 			kill()
 			emit_signal("killed")
+			
+func dash():
+
+	if Input.is_action_pressed("action_dash") and !is_dashing :
+		print("IsDashing")
+		is_dashing = true
+		max_velocity *= dash_multiplier *0.8 
+		forwardThrust *= dash_multiplier 	
+	else:
+		is_dashing=false
+		max_velocity /= dash_multiplier *0.8 
+		forwardThrust /= dash_multiplier 	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -1,8 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://asset/UI/HealthBar/HealthBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://script/Boat.gd" type="Script" id=2]
 [ext_resource path="res://asset/ship.tscn" type="PackedScene" id=3]
+[ext_resource path="res://asset/boat.tscn" type="PackedScene" id=4]
+[ext_resource path="res://asset/boat0.tscn" type="PackedScene" id=5]
+[ext_resource path="res://asset/ship0.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -39,7 +42,12 @@ script = ExtResource( 2 )
 transform = Transform( 2.69038, 0, 0, 0, 1.0086, 0, 0, 0, 0.744873, -0.0203057, -0.000239195, -0.00254817 )
 shape = SubResource( 1 )
 
+[node name="boat" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.180538, 0, 3.41749, 0, 3.42225, 0, -3.41749, 0, -0.180538, -0.471775, -9.53674e-07, -0.230694 )
+visible = false
+
 [node name="ship" parent="." instance=ExtResource( 3 )]
+visible = false
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 2.69038, 0, 0, 0, 1.0086, 0, 0, 0, 0.744873, 0.0443307, 0.055889, -0.0174275 )
@@ -58,8 +66,14 @@ rect_scale = Vector2( 0.3, 0.3 )
 wait_time = 0.8
 one_shot = true
 
+[node name="boat0" parent="." instance=ExtResource( 5 )]
+transform = Transform( -1.14642e-07, 0, 2.62269, 0, 2.62269, 0, -2.62269, 0, -1.14642e-07, 0, 0, 0 )
+visible = false
+
+[node name="ship0" parent="." instance=ExtResource( 6 )]
+
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -1.42826e-07, 0.481111, -0.87666, 7.8383e-08, 0.87666, 0.481111, 1, -8.52651e-14, -1.62921e-07, -11.5405, 5.26053, 0 )
+transform = Transform( -1.42826e-07, 0.481111, -0.87666, 7.8383e-08, 0.87666, 0.481111, 1, -8.52651e-14, -1.62921e-07, -17.4683, 8.06691, 0 )
 far = 1000.0
 
 [node name="Particles" type="Particles" parent="."]

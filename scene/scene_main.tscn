@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://asset/Player/Boat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://script/WinArea.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://asset/lightningManager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://asset/sun.tscn" type="PackedScene" id=7]
 [ext_resource path="res://asset/crystal.tscn" type="PackedScene" id=8]
+[ext_resource path="res://asset/InterpolatedCamera.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -36,6 +37,9 @@ glow_blend_mode = 1
 
 [node name="sun" parent="." instance=ExtResource( 7 )]
 transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 72.2883, 5.97574, 4.34028 )
+
+[node name="InterpolatedCamera" parent="." instance=ExtResource( 9 )]
+speed = 2.5
 
 [node name="Pillar" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 7.20776, 0, 0, 0, 1, 0, 4.39717, 0 )

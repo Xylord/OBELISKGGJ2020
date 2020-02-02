@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://asset/Player/Boat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://script/WinArea.gd" type="Script" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://asset/crystal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://asset/Pickable/Plank.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scene/level_scene_main_script.gd" type="Script" id=10]
+[ext_resource path="res://script/AudioStreamPlayer.gd" type="Script" id=11]
+[ext_resource path="res://asset/Sounds/Home.wav" type="AudioStream" id=12]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -83,9 +85,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.4772, 1.53878, -9.49705 )
 [node name="lightningSpawner" parent="." instance=ExtResource( 6 )]
 
 [node name="crystal" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100.327, 3.68902, 4.26203 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100.363, 3.95331, 4.52512 )
 
 [node name="Plank" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1.06158, 0, 0, 0, 9.92381, 0, 0, 0, 2.83078, 16.6182, -1.20501, -10.7235 )
+
+[node name="Music" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+script = ExtResource( 11 )
 [connection signal="body_entered" from="Boat" to="WinArea" method="_on_Boat_body_entered"]
 [connection signal="body_entered" from="Boat" to="Plank" method="_on_Boat_body_entered"]

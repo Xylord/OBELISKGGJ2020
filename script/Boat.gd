@@ -40,7 +40,8 @@ func _ready():
 
 		
 func _physics_process(_delta):
-
+	
+	
 	if Input.is_action_just_pressed("press_k"):
 		print("Ouch")
 		damage(10)
@@ -62,7 +63,7 @@ func _physics_process(_delta):
 	else:
 		is_gliding=false
 	#_glide()
-	print(ocean)
+	#print(ocean)
 	apply_central_impulse(Vector3(0, buoyancyForce, 0))
 	
 	var vec1 = Vector3(xP, d1.y, zP)
@@ -79,6 +80,7 @@ func _physics_process(_delta):
 	var correctingMoment = localUp.cross(norm)
 	apply_torque_impulse(correctingMoment)
 
+	#print(thrust)
 					
 func _get_movement(_delta: float):
 	if Input.is_action_pressed("ui_accept") and cannon_timer.is_stopped():

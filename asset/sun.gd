@@ -22,6 +22,9 @@ func _process(delta):
 	env.environment.background_energy = charge
 	pass
 
+func _add_charge(value):
+	charge+= value
+	
 func _set_charge(val):
 	charge = val
 	

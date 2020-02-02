@@ -17,8 +17,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	currentCharge = lerp(currentCharge, charge, 0.5)
-	sun.get_surface_material(0).set_shader_param("chargeLevel", currentCharge);
+	sun.get_surface_material(0).set_shader_param("chargeLevel", currentCharge * 10.0);
+#	sun.get_mat.set_shader_param("chargeLevel", currentCharge * 10.0);
 	
+	print(currentCharge)
+	print(sun.get_surface_material(0))
 	env.environment.background_energy = charge
 	pass
 

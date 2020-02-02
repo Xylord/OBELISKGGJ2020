@@ -64,6 +64,7 @@ emission_on_uv2 = false
 
 [node name="Sphere" parent="." index="0"]
 transform = Transform( 1.35122, 0, 0, 0, 1.35122, 0, 0, 0, 1.35122, 0, 0, 0 )
+visible = false
 material/0 = SubResource( 2 )
 
 [node name="Plane" parent="." index="1"]

@@ -1,12 +1,24 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://asset/warningSphere.gd" type="Script" id=1]
 
-[sub_resource type="SphereMesh" id=1]
+[sub_resource type="CapsuleMesh" id=1]
+radius = 0.05
+mid_height = 100.0
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+albedo_color = Color( 0.266667, 0.266667, 0.266667, 0.0745098 )
+emission_enabled = true
+emission = Color( 1, 0.913725, 0, 1 )
+emission_energy = 6.33
+emission_operator = 0
+emission_on_uv2 = false
 
 [node name="WarningMesh" type="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
 mesh = SubResource( 1 )
-material/0 = null
+material/0 = SubResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

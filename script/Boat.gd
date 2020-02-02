@@ -43,7 +43,7 @@ func _physics_process(_delta):
 		print("Ouch")
 		damage(10)
 		
-	dash()	
+	_dash()	
 	_get_movement(_delta)
 	var ocean = get_parent().get_node('Ocean')
 	
@@ -124,14 +124,13 @@ func _set_health(value):
 			kill()
 			emit_signal("killed")
 			
-func dash():
+func _dash():
 
-	if Input.is_action_pressed("action_dash") and !is_dashing :
-		print("IsDashing")
+	if Input.is_action_just_pressed("action_dash") and !is_dashing :
 		is_dashing = true
 		max_velocity *= dash_multiplier *0.8 
 		forwardThrust *= dash_multiplier 	
-	else:
+	elif Input.is_action_just_pressed("action_dash") and is_dashing:
 		is_dashing=false
 		max_velocity /= dash_multiplier *0.8 
 		forwardThrust /= dash_multiplier 	

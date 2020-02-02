@@ -17,6 +17,8 @@ var dash_multiplier = 2;
 var dash_max_speed = 30;
 var is_dashing=false;
 
+var gravity_scale_factor= 0.02
+var is_gliding=false;
 var ocean;
 
 var scene = preload("res://asset/CannonBall.tscn") # Will load when parsing the script.
@@ -55,6 +57,11 @@ func _physics_process(_delta):
 	var d3 = ocean.get_displace(Vector2(xP, zP+0.01))
 	var buoyancyForce = translation.y - global_transform.origin.y
 	buoyancyForce = clamp(buoyancyForce, 0, INF)
+	if buoyancyForce <= 0:
+		is_gliding=true
+	else:
+		is_gliding=false
+	#_glide()
 	print(ocean)
 	apply_central_impulse(Vector3(0, buoyancyForce, 0))
 	
@@ -136,6 +143,18 @@ func _dash():
 		forwardThrust /= dash_multiplier 	
 	
 
+
+func _input(event):
+	if event is InputEventMouseMotion and is_gliding:
+		apply_torque_impulse(global_transform.basis.z *event.relative.y *0.01)
+	
+func _glide():
+	if !is_gliding:
+		is_gliding=true
+		gravity_scale *= gravity_scale_factor	
+	else:
+		is_gliding=false
+		gravity_scale /= gravity_scale_factor	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

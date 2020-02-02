@@ -13,6 +13,8 @@ var  max_rotation = 1.25;
 
 var ocean;
 
+var scene = preload("res://asset/CannonBall.tscn") # Will load when parsing the script.
+
 #health 
 export(float) var max_health = 100
 onready var health = max_health setget _set_health
@@ -62,6 +64,15 @@ func _physics_process(_delta):
 
 					
 func _get_movement():
+	if Input.is_action_pressed("ui_accept"):
+		var node: Spatial = scene.instance()
+		get_parent().add_child(node)
+		var pos: Vector3 = global_transform.origin
+		node.translation = pos
+		var rig: RigidBody = node
+		if rig:
+			rig.set_axis_velocity(global_transform.basis.x * 10.0)
+	
 	if Input.is_action_pressed("ui_up"):
 		if (linear_velocity.length() <max_velocity):
 			thrust = forwardThrust * global_transform.basis.x

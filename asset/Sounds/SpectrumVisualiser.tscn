@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://asset/Sounds/Home.wav" type="AudioStream" id=1]
+[ext_resource path="res://script/visualizer.gd" type="Script" id=2]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
+volume_db = -20.0
+autoplay = true
+
+[node name="Visualizer" type="Node2D" parent="."]
+position = Vector2( 819.349, 592.031 )
+script = ExtResource( 2 )
+max_db = 0.0
+min_db = -120.0
+accel = 20.0
